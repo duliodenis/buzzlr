@@ -9,7 +9,7 @@
 import UIKit
 import OAuthSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, FlurryAdNativeDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
