@@ -166,18 +166,43 @@ class ViewController: UIViewController, FlurryAdNativeDelegate, UITableViewDataS
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! UITableViewCell
-        
-        //        if let data = NSData(contentsOfURL: NSURL(string: urlString)) {
-        //
-        //        }
         let row = indexPath.row
-      cell.imageView?.image = images![indexPath.row]
+        
+        
+        
+//        cell.imageView?.image = images![indexPath.row]
+        cell.imageView?.image = decorateImage("If you were a vegetable you'd be a cute-cumber.",
+            originalImage: images![indexPath.row], atPoint: CGPointMake(40, 40))
         
         cell.imageView?.contentMode = .ScaleAspectFill
         
         cell.textLabel?.text = ""
         return cell
     }
+    
+    // MARK: - Photo Helper Methods
+    
+    func decorateImage(pickupLine:NSString, originalImage: UIImage, atPoint: CGPoint) -> UIImage {
+        var textColor: UIColor = UIColor.whiteColor()
+        var textFont: UIFont = UIFont(name: "Baskerville", size: 40)!
+        
+        UIGraphicsBeginImageContext(originalImage.size)
+        
+        let textFontAttributes = [
+            NSFontAttributeName: textFont,
+            NSForegroundColorAttributeName: textColor
+        ]
+        
+        originalImage.drawInRect(CGRectMake(0, 0, originalImage.size.width, originalImage.size.height))
+        var rect: CGRect = CGRectMake(atPoint.x, atPoint.y, originalImage.size.width, originalImage.size.height)
+        pickupLine.drawInRect(rect, withAttributes: textFontAttributes)
+        var newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
+    
     
 }
 
