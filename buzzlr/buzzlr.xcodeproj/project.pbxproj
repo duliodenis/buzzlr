@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492CF34E1B8CCD10001AA022 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7491B8CB91C00373B3C /* OAuthSwift.framework */; };
+		492CF34F1B8CCD10001AA022 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7491B8CB91C00373B3C /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6CFFF71B1B8CAF4B00373B3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFFF71A1B8CAF4B00373B3C /* AppDelegate.swift */; };
 		6CFFF71D1B8CAF4B00373B3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFFF71C1B8CAF4B00373B3C /* ViewController.swift */; };
 		6CFFF7201B8CAF4B00373B3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CFFF71E1B8CAF4B00373B3C /* Main.storyboard */; };
@@ -18,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		492CF3501B8CCD10001AA022 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CFFF73F1B8CB91C00373B3C /* OAuthSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F43502791A6791B200038A29;
+			remoteInfo = OAuthSwift;
+		};
 		6CFFF72B1B8CAF4B00373B3C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6CFFF70D1B8CAF4B00373B3C /* Project object */;
@@ -62,6 +71,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		492CF3521B8CCD11001AA022 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				492CF34F1B8CCD10001AA022 /* OAuthSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6CFFF7151B8CAF4B00373B3C /* buzzlr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buzzlr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CFFF7191B8CAF4B00373B3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492CF34E1B8CCD10001AA022 /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,11 +208,13 @@
 				6CFFF7111B8CAF4B00373B3C /* Sources */,
 				6CFFF7121B8CAF4B00373B3C /* Frameworks */,
 				6CFFF7131B8CAF4B00373B3C /* Resources */,
+				492CF3521B8CCD11001AA022 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				6CFFF74F1B8CB95A00373B3C /* PBXTargetDependency */,
+				492CF3511B8CCD10001AA022 /* PBXTargetDependency */,
 			);
 			name = buzzlr;
 			productName = buzzlr;
@@ -330,6 +356,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		492CF3511B8CCD10001AA022 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthSwift;
+			targetProxy = 492CF3501B8CCD10001AA022 /* PBXContainerItemProxy */;
+		};
 		6CFFF72C1B8CAF4B00373B3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6CFFF7141B8CAF4B00373B3C /* buzzlr */;
