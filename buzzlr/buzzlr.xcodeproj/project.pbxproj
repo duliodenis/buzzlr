@@ -18,6 +18,18 @@
 		6CFFF7581B8CCD3300373B3C /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7491B8CB91C00373B3C /* OAuthSwift.framework */; };
 		6CFFF7591B8CCD3300373B3C /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7491B8CB91C00373B3C /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6CFFF75E1B8CDFDB00373B3C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFFF75D1B8CDFDB00373B3C /* SwiftyJSON.swift */; };
+		6CFFF7611B8CF67100373B3C /* Flurry in Resources */ = {isa = PBXBuildFile; fileRef = 6CFFF75F1B8CF67100373B3C /* Flurry */; };
+		6CFFF7621B8CF67100373B3C /* FlurryAds in Resources */ = {isa = PBXBuildFile; fileRef = 6CFFF7601B8CF67100373B3C /* FlurryAds */; };
+		6CFFF7651B8CF74E00373B3C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7641B8CF74E00373B3C /* Security.framework */; };
+		6CFFF7671B8CF75B00373B3C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7661B8CF75B00373B3C /* AdSupport.framework */; };
+		6CFFF7691B8CF76A00373B3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7681B8CF76A00373B3C /* CoreGraphics.framework */; };
+		6CFFF76B1B8CF77700373B3C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF76A1B8CF77700373B3C /* MediaPlayer.framework */; };
+		6CFFF76D1B8CF78500373B3C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF76C1B8CF78500373B3C /* libz.dylib */; };
+		6CFFF76F1B8CF78F00373B3C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF76E1B8CF78F00373B3C /* StoreKit.framework */; };
+		6CFFF7711B8CF79B00373B3C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7701B8CF79B00373B3C /* CoreMedia.framework */; };
+		6CFFF7731B8CF7A500373B3C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7721B8CF7A400373B3C /* SystemConfiguration.framework */; };
+		6CFFF7751B8CF81000373B3C /* libFlurry_6.7.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7741B8CF81000373B3C /* libFlurry_6.7.0.a */; };
+		6CFFF7771B8CF83800373B3C /* libFlurryAds_6.7.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFFF7761B8CF83800373B3C /* libFlurryAds_6.7.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +113,19 @@
 		6CFFF7541B8CC33E00373B3C /* Locksmith.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Locksmith.swift; path = Frameworks/Locksmith.swift; sourceTree = SOURCE_ROOT; };
 		6CFFF7551B8CC33E00373B3C /* LocksmithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocksmithRequest.swift; path = Frameworks/LocksmithRequest.swift; sourceTree = SOURCE_ROOT; };
 		6CFFF75D1B8CDFDB00373B3C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Frameworks/SwiftyJSON.swift; sourceTree = SOURCE_ROOT; };
+		6CFFF75F1B8CF67100373B3C /* Flurry */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Flurry; sourceTree = "<group>"; };
+		6CFFF7601B8CF67100373B3C /* FlurryAds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FlurryAds; sourceTree = "<group>"; };
+		6CFFF7631B8CF6A300373B3C /* buzzlr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "buzzlr-Bridging-Header.h"; sourceTree = "<group>"; };
+		6CFFF7641B8CF74E00373B3C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6CFFF7661B8CF75B00373B3C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		6CFFF7681B8CF76A00373B3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6CFFF76A1B8CF77700373B3C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		6CFFF76C1B8CF78500373B3C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		6CFFF76E1B8CF78F00373B3C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6CFFF7701B8CF79B00373B3C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		6CFFF7721B8CF7A400373B3C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6CFFF7741B8CF81000373B3C /* libFlurry_6.7.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.7.0.a; path = Flurry/libFlurry_6.7.0.a; sourceTree = "<group>"; };
+		6CFFF7761B8CF83800373B3C /* libFlurryAds_6.7.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurryAds_6.7.0.a; path = FlurryAds/libFlurryAds_6.7.0.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +133,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CFFF7751B8CF81000373B3C /* libFlurry_6.7.0.a in Frameworks */,
+				6CFFF7771B8CF83800373B3C /* libFlurryAds_6.7.0.a in Frameworks */,
+				6CFFF7731B8CF7A500373B3C /* SystemConfiguration.framework in Frameworks */,
+				6CFFF7711B8CF79B00373B3C /* CoreMedia.framework in Frameworks */,
+				6CFFF76F1B8CF78F00373B3C /* StoreKit.framework in Frameworks */,
+				6CFFF76D1B8CF78500373B3C /* libz.dylib in Frameworks */,
+				6CFFF76B1B8CF77700373B3C /* MediaPlayer.framework in Frameworks */,
+				6CFFF7691B8CF76A00373B3C /* CoreGraphics.framework in Frameworks */,
+				6CFFF7671B8CF75B00373B3C /* AdSupport.framework in Frameworks */,
+				6CFFF7651B8CF74E00373B3C /* Security.framework in Frameworks */,
 				6CFFF7581B8CCD3300373B3C /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +217,19 @@
 		6CFFF73A1B8CB15100373B3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6CFFF7761B8CF83800373B3C /* libFlurryAds_6.7.0.a */,
+				6CFFF7741B8CF81000373B3C /* libFlurry_6.7.0.a */,
+				6CFFF7721B8CF7A400373B3C /* SystemConfiguration.framework */,
+				6CFFF7701B8CF79B00373B3C /* CoreMedia.framework */,
+				6CFFF76E1B8CF78F00373B3C /* StoreKit.framework */,
+				6CFFF76C1B8CF78500373B3C /* libz.dylib */,
+				6CFFF76A1B8CF77700373B3C /* MediaPlayer.framework */,
+				6CFFF7681B8CF76A00373B3C /* CoreGraphics.framework */,
+				6CFFF7661B8CF75B00373B3C /* AdSupport.framework */,
+				6CFFF7641B8CF74E00373B3C /* Security.framework */,
+				6CFFF7631B8CF6A300373B3C /* buzzlr-Bridging-Header.h */,
+				6CFFF75F1B8CF67100373B3C /* Flurry */,
+				6CFFF7601B8CF67100373B3C /* FlurryAds */,
 				6CFFF75D1B8CDFDB00373B3C /* SwiftyJSON.swift */,
 				6CFFF7541B8CC33E00373B3C /* Locksmith.swift */,
 				6CFFF7551B8CC33E00373B3C /* LocksmithRequest.swift */,
@@ -323,6 +371,8 @@
 			files = (
 				6CFFF7201B8CAF4B00373B3C /* Main.storyboard in Resources */,
 				6CFFF7251B8CAF4B00373B3C /* LaunchScreen.xib in Resources */,
+				6CFFF7621B8CF67100373B3C /* FlurryAds in Resources */,
+				6CFFF7611B8CF67100373B3C /* Flurry in Resources */,
 				6CFFF7221B8CAF4B00373B3C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,9 +532,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/buzzlr/FlurryAds",
+					"$(PROJECT_DIR)/buzzlr/Flurry",
+				);
 				INFOPLIST_FILE = buzzlr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/buzzlr/Flurry",
+					"$(PROJECT_DIR)/buzzlr/FlurryAds",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "buzzlr/buzzlr-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -492,9 +554,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/buzzlr/FlurryAds",
+					"$(PROJECT_DIR)/buzzlr/Flurry",
+				);
 				INFOPLIST_FILE = buzzlr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/buzzlr/Flurry",
+					"$(PROJECT_DIR)/buzzlr/FlurryAds",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "buzzlr/buzzlr-Bridging-Header.h";
 			};
 			name = Release;
 		};
