@@ -9,12 +9,65 @@
 import UIKit
 import OAuthSwift
 
-class ViewController: UIViewController, FlurryAdNativeDelegate {
+class ViewController: UIViewController, FlurryAdNativeDelegate, UITableViewDataSource, UITableViewDelegate {
 
     var images: [UIImage]?
+    var tableView: UITableView?
+    let CellIdentifier: String = "CELL"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.images = [UIImage]()
+        
+        let OAUTH = "OAuthData"
+        let BUZZLR = "buzzlr"
+        // Load from the Keychain
+        let (oAuthData, _) = Locksmith.loadDataForUserAccount(OAUTH, inService: BUZZLR)
+        // Do we have one?
+        if let accessToken: AnyObject = oAuthData?.objectForKey("accessToken") {
+            // We got the data back, so we’ve got an access token
+            getTumblrData()
+        } else {
+            // Locksmith couldn’t find anything in the keychain
+           autoLoginTumblr()
+        }
+        
+        var frame = CGRectMake(10, 0, self.view.bounds.width - 10, self.view.bounds.height)
+        tableView = UITableView(frame: frame, style: .Plain)
+        
+        if let newTable = tableView {
+            newTable.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellIdentifier)
+            newTable.dataSource = self
+            newTable.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+            view.addSubview(newTable)
+        }
+
+    }
+    
+    func autoLoginTumblr() {
+        let oauthswift = OAuth1Swift(
+            consumerKey:    "CC3BXFyI4YwGviO2AZk3fM1jgHdaa6WtKO7x9YxbAjNvqvqfhl",
+            consumerSecret: "VuesMgrRKvsj1L3qCFdM0ECJeV8YJGafMPwpzTOSeFhRpB07nI",
+            requestTokenUrl: "https://www.tumblr.com/oauth/request_token",
+            authorizeUrl:    "https://www.tumblr.com/oauth/authorize",
+            accessTokenUrl:  "https://www.tumblr.com/oauth/access_token"
+        )
+        oauthswift.authorizeWithCallbackURL( NSURL(string: "oauth-swift://oauth-callback/tumblr")!, success: {
+            credential, response in
+            
+            // Save the token data
+            let OAUTH = "OAuthData"
+            let BUZZLR = "buzzlr"
+            
+            let error = Locksmith.saveData(["accessToken": credential.oauth_token as String],
+                forUserAccount: OAUTH, inService: BUZZLR)
+            
+            self.showAlertView("Tumblr", message: "oauth_token:\(credential.oauth_token)\n\noauth_toke_secret:\(credential.oauth_token_secret)")
+            self.getTumblrData()
+            }, failure: {(error:NSError!) -> Void in
+                println(error.localizedDescription)
+        })
     }
     
     @IBAction func loginTumblr(sender: AnyObject) {
@@ -40,20 +93,6 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
             }, failure: {(error:NSError!) -> Void in
                 println(error.localizedDescription)
         })
-/*
-        let OAUTH = "OAuthData"
-        let BUZZLR = "buzzlr"
-        // Load from the Keychain
-        let (oAuthData, _) = Locksmith.loadDataForUserAccount(OAUTH, inService: BUZZLR)
-        // Do we have one?
-        if let accessToken: AnyObject = oAuthData?.objectForKey("accessToken") {
-            // We got the data back, so we’ve got an access token
-            self.showAlertView("Token", message: "We have a token: \(accessToken)")
-        } else {
-            // Locksmith couldn’t find anything in the keychain
-            self.showAlertView("Token", message: "No token found.")
-        }
-*/
     }
 
     func showAlertView(title: String, message: String) {
@@ -82,9 +121,7 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
             if ((jsonError) != nil) {
                 print(jsonError!.localizedDescription)
             } else {
-                // print(jsonResult)
-                self.images = [UIImage]()
-               // let imageUrl = jsonResult[“data”][“media”]["images"]["low_resolution"]["url"].stringValue
+                
                 let swiftyJson = JSON(data: data)
                 let numberOfPhotos = swiftyJson["response"].count
                 for photoIndex in 0..<numberOfPhotos {
@@ -94,16 +131,11 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
                        self.images?.append(image!)
                     }
                 }
-                // let imageUrl = swiftyJson["response"][0]["photos"][0]["original_size"]["url"].stringValue
                 print(self.images?.count)
-//                if let response: AnyObject = jsonResult["response"] {
-//                    if let firstResponse: AnyObject = response[0] {
-//                        if let photos: AnyObject = firstResponse["photos"] {
-//                            if let photoURL: AnyObject = photos[
-//                            print(photos)
-//                        }
-//                    }
-//                }
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.tableView?.reloadData()
+                })
+
             }
         }
         task.resume()
@@ -119,6 +151,32 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
         }
         return nil
         
+    }
+    
+    // MARK: - TableView Delegte Methods
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let numberInArray = images!.count
+        return numberInArray
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        
+        //        if let data = NSData(contentsOfURL: NSURL(string: urlString)) {
+        //
+        //        }
+        let row = indexPath.row
+      cell.imageView?.image = images![indexPath.row]
+        
+        cell.imageView?.contentMode = .ScaleAspectFill
+        
+        cell.textLabel?.text = ""
+        return cell
     }
     
 }
