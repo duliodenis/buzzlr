@@ -168,16 +168,20 @@ class ViewController: UIViewController, FlurryAdNativeDelegate, UITableViewDataS
         let cell: ImageTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! ImageTableViewCell
 
         let row = indexPath.row
-        
+                
         cell.imageView?.image = images![indexPath.row]
         cell.imageView?.image = decorateImage("If you were a vegetable you'd be a cute-cumber.",
-            originalImage: images![indexPath.row], atPoint: CGPointMake(40, 40))
+            originalImage: images![indexPath.row], atPoint: CGPointMake(40, 120))
         cell.imageView?.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView!.frame), 400)
         
         cell.imageView?.contentMode = .ScaleAspectFill
         
-        cell.textLabel?.text = ""
+
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 400.0
     }
 
     
