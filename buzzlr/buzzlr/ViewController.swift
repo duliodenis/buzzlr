@@ -37,7 +37,7 @@ class ViewController: UIViewController, FlurryAdNativeDelegate, UITableViewDataS
         tableView = UITableView(frame: frame, style: .Plain)
         
         if let newTable = tableView {
-            newTable.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellIdentifier)
+            newTable.registerClass(ImageTableViewCell.classForCoder(), forCellReuseIdentifier: CellIdentifier)
             newTable.dataSource = self
             newTable.autoresizingMask = .FlexibleWidth | .FlexibleHeight
             view.addSubview(newTable)
@@ -165,20 +165,21 @@ class ViewController: UIViewController, FlurryAdNativeDelegate, UITableViewDataS
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell: ImageTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! ImageTableViewCell
+
         let row = indexPath.row
         
-        
-        
-//        cell.imageView?.image = images![indexPath.row]
+        cell.imageView?.image = images![indexPath.row]
         cell.imageView?.image = decorateImage("If you were a vegetable you'd be a cute-cumber.",
             originalImage: images![indexPath.row], atPoint: CGPointMake(40, 40))
+        cell.imageView?.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView!.frame), 400)
         
         cell.imageView?.contentMode = .ScaleAspectFill
         
         cell.textLabel?.text = ""
         return cell
     }
+
     
     // MARK: - Photo Helper Methods
     
