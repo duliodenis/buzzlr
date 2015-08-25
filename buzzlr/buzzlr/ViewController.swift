@@ -75,7 +75,7 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
             }
             
             var jsonError : NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! Dictionary<String, String>
+            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
             
             if ((jsonError) != nil) {
                 print(jsonError!.localizedDescription)
@@ -83,6 +83,7 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
                 print(jsonResult)
             }
         }
+        task.resume()
     }
 }
 
