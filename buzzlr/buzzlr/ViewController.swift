@@ -11,6 +11,8 @@ import OAuthSwift
 
 class ViewController: UIViewController, FlurryAdNativeDelegate {
 
+    var images: [UIImage]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,9 +21,9 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
         let oauthswift = OAuth1Swift(
             consumerKey:    "CC3BXFyI4YwGviO2AZk3fM1jgHdaa6WtKO7x9YxbAjNvqvqfhl",
             consumerSecret: "VuesMgrRKvsj1L3qCFdM0ECJeV8YJGafMPwpzTOSeFhRpB07nI",
-            requestTokenUrl: "http://www.tumblr.com/oauth/request_token",
-            authorizeUrl:    "http://www.tumblr.com/oauth/authorize",
-            accessTokenUrl:  "http://www.tumblr.com/oauth/access_token"
+            requestTokenUrl: "https://www.tumblr.com/oauth/request_token",
+            authorizeUrl:    "https://www.tumblr.com/oauth/authorize",
+            accessTokenUrl:  "https://www.tumblr.com/oauth/access_token"
         )
         oauthswift.authorizeWithCallbackURL( NSURL(string: "oauth-swift://oauth-callback/tumblr")!, success: {
             credential, response in
@@ -80,10 +82,44 @@ class ViewController: UIViewController, FlurryAdNativeDelegate {
             if ((jsonError) != nil) {
                 print(jsonError!.localizedDescription)
             } else {
-                print(jsonResult)
+                // print(jsonResult)
+                self.images = [UIImage]()
+               // let imageUrl = jsonResult[“data”][“media”]["images"]["low_resolution"]["url"].stringValue
+                let swiftyJson = JSON(data: data)
+                let numberOfPhotos = swiftyJson["response"].count
+                for photoIndex in 0..<numberOfPhotos {
+                    let foundImage = swiftyJson["response"][photoIndex]["photos"][0]["original_size"]["url"].stringValue
+                    let image = self.imageFromPath(foundImage)
+                    if image != nil {
+                       self.images?.append(image!)
+                    }
+                }
+                // let imageUrl = swiftyJson["response"][0]["photos"][0]["original_size"]["url"].stringValue
+                print(self.images?.count)
+//                if let response: AnyObject = jsonResult["response"] {
+//                    if let firstResponse: AnyObject = response[0] {
+//                        if let photos: AnyObject = firstResponse["photos"] {
+//                            if let photoURL: AnyObject = photos[
+//                            print(photos)
+//                        }
+//                    }
+//                }
             }
         }
         task.resume()
     }
+
+
+    // MARK: - Image Helper Functions
+    
+    func imageFromPath(path: String) -> UIImage? {
+        let tumblrURL = NSURL(string: path)
+        if let imageData = NSData(contentsOfURL: tumblrURL!) {
+            return UIImage(data: imageData)
+        }
+        return nil
+        
+    }
+    
 }
 
